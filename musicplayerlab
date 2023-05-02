@@ -1,0 +1,97 @@
+import java.util.Scanner;
+public  class Main {
+    public  static void main(String[] args) {
+        
+        System.out.println("music player uygulamasi");
+        System.out.println("(1)android icin musicplayer");
+        System.out.println("(2)desktop icin musicplayer");
+        
+        int secim;
+        Scanner sc = new Scanner(System.in);
+        secim = sc.nextInt();
+        
+        String parca = "1.muzik";
+        
+        if(secim == 1){
+         AndroidMusicPlayer androidPlayer = new AndroidMusicPlayer();
+            
+          System.out.println("(1)muzik cal");  
+          System.out.println("(2)muzik kaydet");
+          System.out.println("(3)muzik durdur");
+        
+          int androidSecim;
+          Scanner scAndroid = new Scanner(System.in);
+          androidSecim = scAndroid.nextInt();
+          
+          switch(androidSecim){
+              case 1: androidPlayer.playMusic(parca);
+              break;
+              case 2: androidPlayer.saveMusic();
+              break;
+              case 3: androidPlayer.stopMusic();
+              break;
+              default: System.out.println("gecersiz giris");
+          }
+        }
+        if(secim == 2){
+          DesktopMusicPlayer desktopPlayer = new DesktopMusicPlayer();
+          System.out.println("(1)muzik cal");  
+          System.out.println("(2)muzik kaydet");
+          System.out.println("(3)muzik durdur");
+          
+          int desktopSecim;
+          Scanner scDesktop = new Scanner(System.in);
+          desktopSecim = scDesktop.nextInt();
+          
+          switch(desktopSecim){
+              case 1: desktopPlayer.playMusic(parca);
+              break;
+              case 2: desktopPlayer.saveMusic();
+              break;
+              case 3: desktopPlayer.stopMusic();
+              break;
+              default: System.out.println("gecersiz giris");
+          }
+            
+        }
+        
+        }
+    static abstract class MusicPlayer{
+    abstract void playMusic (String parca);
+    abstract void saveMusic();
+    abstract void stopMusic();
+}
+
+static class AndroidMusicPlayer extends MusicPlayer{
+    void playMusic(String parca){
+        System.out.println(parca + "caliyor");
+    }
+    void saveMusic(){
+        System.out.println("android icin muzik kaydedildi");
+    }
+    void stopMusic(){
+        System.out.println("android icin muzik durduruldu");
+    }
+}
+static  class DesktopMusicPlayer extends MusicPlayer{
+    void playMusic(String parca){
+        System.out.println(parca + "caliyor");
+    }
+    void saveMusic(){
+        System.out.println("desktop icin muzik kaydedildi");
+    }
+    void stopMusic(){
+        System.out.println("desktop icin muzik durduruldu");
+    } 
+}
+        
+    }
+
+
+
+
+
+
+
+
+
